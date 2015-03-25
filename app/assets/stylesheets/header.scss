@@ -1,0 +1,68 @@
+$green: #39AA3F;
+
+.header {
+  background-size: 100%;
+  background-repeat: no-repeat;
+
+  .ad {
+    width: 800px;
+    height: 70px;
+    background: white;
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+    box-shadow: 0 0 2px black;
+
+    margin: auto;
+    padding: 10px;
+    position: relative;
+
+    h1 {
+      color: $green;
+      line-height: 50px;
+    }
+
+    a:hover {
+      color: $green;
+      // text-decoration: none;
+    }
+
+    img {
+      height: 100%;
+    }
+  }
+
+  .slogan {
+    padding: 1em 0;
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    font-size: 72px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-align: center;
+  }
+
+  .nav {
+    text-align: center;
+
+    .nav-item {
+      border: 2px solid white;
+      border-radius: 5px;
+      margin: 0 4px;
+      padding: 5px 10px 10px 10px;
+      display: inline-block;
+      font-family: 'Oswald', sans-serif;
+      color: white;
+      text-transform: uppercase;;
+      font-size: 18px;
+      width: 145px;
+
+      img {
+        margin: auto;
+        display: block;
+        height: 60px;
+        margin-bottom: 6px;
+      }
+    }
+  }
+ }

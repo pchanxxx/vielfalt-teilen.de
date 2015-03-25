@@ -1,0 +1,27 @@
+<h2>Zeichen</h2>
+
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Nachricht</th>
+      <th width="180" class="actions"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @zeichens.each do |z| %>
+    <tr>
+      <td><%= image_tag "#{z.picture}.svg" %></td>
+      <td><%= z.name %><br>(<%= z.email%>)</td>
+      <td><%= z.text %></td>
+      <td style="text-align: right;">
+        <% unless z.published %>
+          <%= link_to 'Veröffentlichen', admin_zeichen_path(z), method: :put, class: ['btn', 'btn-small'] %>
+        <% end %>
+        <%= link_to 'Löschen', admin_zeichen_path(z), method: :delete, data: { confirm: 'Sind Sie sicher?' }, class: ['btn', 'btn-small', 'btn-danger'] %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

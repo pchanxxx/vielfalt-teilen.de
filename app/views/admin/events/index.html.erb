@@ -1,0 +1,26 @@
+<h2>
+  Termine
+</h2>
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th>Start</th>
+      <th>Ende</th>
+      <th>Slogan</th>
+      <th width="150" class="actions"><%= link_to 'Neuer Termin', new_admin_event_path, class: ['btn', 'btn-small', 'btn-success', 'btn-block'] %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @events.each do |e| %>
+    <tr>
+      <td><%= l e.date_start, format: :short if e.date_start %></td>
+      <td><%= l e.date_end, format: :short if e.date_end %></td>
+      <td><%= e.name %></td>
+      <td>
+        <%= link_to 'Bearbeiten', edit_admin_event_path(e), class: ['btn', 'btn-small'] %>
+        <%= link_to 'Löschen', admin_event_path(e), method: :delete, data: { confirm: 'Sind Sie sicher?' }, class: ['btn', 'btn-small', 'btn-danger'] %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

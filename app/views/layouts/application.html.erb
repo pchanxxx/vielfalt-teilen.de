@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kirsi Hofmeister-Streit | vielfalt-teilen.de</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag :modernizr %>
+  <%= csrf_meta_tags %>
+
+  <%= yield(:og_meta) unless content_for(:og_meta).blank? %>
+</head>
+<body>
+
+<div class="container">
+  <div class="header" style="background-image: url('<%= active_header %>');">
+    <div class="ad">
+      <%= link_to root_path do %>
+        <%= image_tag 'logo.svg', class: 'pull-left' %>
+        <%= image_tag 'viele_farben.png', class: 'pull-right' %>
+        <h1>Kirsi Hofmeister-Streit</h1>
+      <% end %>
+    </div>
+
+    <div class="slogan">
+      <%= @active_category ? @active_category.slogan : "Vielfalt teilen!" %>
+    </div>
+
+    <div class="nav">
+      <% categories.each do |category| %>
+      <%= link_to category do %>
+          <span class="nav-item" style="background: linear-gradient(  <%= category.color_top %>, <%= category.color_bottom %>);">
+              <%= image_tag "#{category.slug}.svg", alt: category.name %>
+            <%= category.name %>
+          </span>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="inner-container">
+    <div class="row-fluid">
+      <% if @active_category and !@post %>
+        <div class="category_description">
+	<% if @simple %>
+	  <%= link_to 'Zurück', @active_category, class: 'button pull-right'%>
+          <%= raw @active_category.simpletext %>
+	<% else %>
+	  <%= link_to 'Einfach gesagt', category_path(@active_category, simple: true), class: 'button pull-right' %>
+	  <%= raw @active_category.introtext %>
+	<% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="row-fluid">
+      <div class="span3 sidebar">
+        <% unless @active_category and !@post %>
+          <div class="factsheet">
+            <h3>Das bin ich</h3>
+            <%= image_tag "briefmarke.png", alt: "Kirsi Hofmeister-Streit" %>
+            <h4>Kirsi Hofmeister-Streit</h4>
+            <p>
+              verheiratet, 2 Kinder
+              evangelisch<br>
+              Coach und Dozentin<br>
+              Bezirksrätin<br>
+              Direktkandidatin für den Stimmkreis Augsburg-Ost<br>
+              Bezirkstagsliste 4, Platz 1
+            </p>
+          </div>
+        <% end %>
+
+        <%= link_to zeichens_path do %>
+          <%= image_tag 'zeichensetzen.svg', alt: "Setze dein Zeichen", class: 'zeichensetzen' %>
+        <% end %>
+      </div>
+      <div class="span9 content" role="main">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+
+  <div class="seizebig">
+    <i class="icon-zoom-in"></i>
+    Mach es groß
+  </div>
+
+  <div class="footer">
+    <div class="pull-left">
+      <p>2013 BÜNDNIS 90/DIE GRÜNEN</p>
+    </div>
+    <div class="pull-right">
+      <p><%= link_to "Termine", events_path %> | <%= link_to "Impressum", static_impressum_path %></p>
+    </div>
+  </div>
+</div>
+
+
+<%= javascript_include_tag :application %>
+<script type="text/javascript">
+
+  var _paq = _paq || [];
+
+  _paq.push(["trackPageView"]);
+
+  _paq.push(["enableLinkTracking"]);
+
+
+  (function() {
+
+    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://fuenfzueins.vorwaerts-werbung.de/piwik/";
+
+    _paq.push(["setTrackerUrl", u+"piwik.php"]);
+
+    _paq.push(["setSiteId", "19"]);
+
+    var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+
+    g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+
+  })();
+
+</script>
+
+</body>
+</html>

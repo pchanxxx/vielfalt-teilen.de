@@ -1,0 +1,23 @@
+<%= form_for [:admin, @user], multipart: true, class: "form-horizontal" do |f| %>
+  <div class="row-fluid">
+    <div class="span6">
+      <%= f.label :email, 'E-Mail-Adresse' %>
+      <%= f.text_field :email, class: 'input-block-level' %>
+    </div>
+  </div>
+
+  <div class="row-fluid">
+    <div class="span3">
+      <%= f.label :password, 'Passwort' %>
+      <%= f.password_field :password, class: 'input-block-level' %>
+    </div>
+    <div class="span3">
+      <%= f.label :password_confirmation, 'Passwort wiederholen' %>
+      <%= f.password_field :password_confirmation, class: 'input-block-level' %>
+    </div>
+    <div class="span6">
+      <label>&nbsp;</label>
+      <button type="submit" class="btn">Speichern</button>
+    </div>
+  </div>
+<% end %>

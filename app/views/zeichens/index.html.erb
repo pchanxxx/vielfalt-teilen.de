@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Setze Dein Zeichen | vielfalt-teilen.de</title>
+  <%= stylesheet_link_tag    "zeichensetzen", :media => "all" %>
+  <%= javascript_include_tag :modernizr %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="header">
+  <div class="container">
+    <div class="pull-left"><%= image_tag 'logo.svg', alt: 'BÜNDNIS 90/DIE GRÜNEN' %></div>
+    <div class="pull-right"><%= image_tag 'viele_farben.png', alt: 'Grün hat viele Farben' %></div>
+
+    <div>
+      <%= link_to '« Zurück zur Seite', root_path %>
+    </div>
+
+    <div class="zeichencontainer">
+      <div class="setzedeinzeichen">
+        Setze dein Zeichen
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style='width: 95%; margin: auto;'>
+  <div class="zeichensetzen">
+
+    <ul class="bbl-grid" data-page='1'>
+      <% @zeichens.each do |z| %>
+        <li>
+          <div class="bbl-item" data-picture='<%= z.picture %>' data-name='<%= z.name %>' data-message='<%= z.text %>'></div>
+        </li>
+      <% end %>
+    </ul>
+    <div class="pagination" href='/zeichensetzen.json?page=2'></div>
+  </div>
+</div>
+
+<div class="zeichen_bg"></div>
+<div class="bubble_bg"></div>
+<div class="neues_zeichen">
+  <%= form_for @zeichen do |f| %>
+    <% %w(beloved headbang thumbup thumbdown enlighted whatiask whatisay crying sad smile).each do |picture| %>
+      <%= f.label "picture_#{picture}" do %>
+        <%= image_tag "#{picture}.svg" %>
+        <%= f.radio_button :picture, picture, id: "zeichen_picture_#{picture}" %>
+      <% end %>
+    <% end %>
+
+    <%= f.text_field :name, placeholder: 'Name', class: 'input-block-level' %>
+    <%= f.email_field :email, placeholder: 'E-Mail (wird nicht veröffentlicht)', class: 'input-block-level' %>
+    <%= f.text_area :text, rows: 3, class: 'input-block-level', maxlength: 140 %>
+    <div class="pull-left"><%= f.submit "Zeichen setzen", class: 'btn btn-small', id: 'zeichen_submit' %></div>
+    <div class="charcounter"><span id="charCount">0</span>/140 Zeichen</div>
+    <div class="error"></div>
+  <% end %>
+</div>
+
+<%= javascript_include_tag "zeichensetzen" %>
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(["trackPageView"]);
+  _paq.push(["enableLinkTracking"]);
+
+  (function() {
+    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://fuenfzueins.vorwaerts-werbung.de/piwik/";
+    _paq.push(["setTrackerUrl", u+"piwik.php"]);
+    _paq.push(["setSiteId", "19"]);
+    var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+    g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+  })();
+
+</script>
+</body>
+</html>

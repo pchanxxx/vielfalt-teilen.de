@@ -1,0 +1,31 @@
+<%= form_for [:admin, @category], multipart: true, class: "form-horizontal" do |f| %>
+  <div class="control-group">
+    <%= f.label :name, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :slug, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :slug %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :slogan, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :slogan %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :header_image, class: 'control-label' %>
+    <div class="controls">
+      <%= f.file_field :header_image %>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <button type="submit" class="btn">Speichern</button>
+    </div>
+  </div>
+<% end %>

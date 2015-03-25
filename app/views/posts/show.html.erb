@@ -1,0 +1,41 @@
+<% content_for(:og_meta) do %>
+  <meta property="og:image" content="<%= URI.join(request.url, @post.teaser_image.url(:original)) %>" />
+  <meta property="og:title" content="<%= @post.title %>" />
+  <meta property="og:url" content="<%= category_post_url(@post.category, @post) %>" />
+  <meta property="og:site_name" content="Kirsi Hofmeister-Streit | vielfalt-teilen.de" />
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:description" content="<%= @post.intro %>" />
+<% end %>
+
+<div class="post">
+  <h3><%= @post.title %></h3>
+  <%= image_tag @post.teaser_image.url(:thumb), alt: @post.title %>
+  <p style="font-style: italic;"><%= @post.intro %></p>
+
+  <hr style="clear:both;">
+
+  <% if @simple %>
+    <div class="simpletext" style='clear:both'>
+      <%= raw @post.simple_text %>
+    </div>
+  <% else %>
+    <div class="volltext" style='clear:both'>
+      <%= raw @post.full_text %>
+    </div>
+  <% end %>
+
+  <div class="links">
+    <% if @post.intro_audio_url %>
+      <a href="#" class="play_audio" data-audio-url="<%= @post.intro_audio_url %>">Vorlesen</a>
+    <% end %>
+    <%= link_to 'Facebook', "https://www.facebook.com/sharer/sharer.php?u=#{category_post_url(@post.category,@post)}", target: '_blank' %>
+    <%= link_to 'Twitter', "https://twitter.com/intent/tweet?hashtags=vielfaltteilen&text=#{@post.title }: &tw_p=link&url=#{category_post_url(@post.category, @post)}&via=Kirsi_HoSt", target: '_blank' %>
+    <% unless @post.simple_text.blank? or @simple %>
+    <%= link_to 'Einfach gesagt', "#{category_post_url(@post.category, @post)}?simple=true" %>
+    <% end %>
+    <% unless @post.simple_text.blank? or !@simple %>
+      <%= link_to 'Mehr lesen', category_post_url(@post.category, @post) %>
+    <% end %>
+  </div>
+</div>

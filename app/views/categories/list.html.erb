@@ -1,0 +1,7 @@
+<section class="posts">
+  <% @posts.each do |post| %>
+    <%= render post %>
+  <% end %>
+</section>
+
+<%= paginate @posts %>

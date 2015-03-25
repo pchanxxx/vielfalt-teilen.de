@@ -1,0 +1,53 @@
+<%= form_for [:admin, @event], multipart: true, class: "form-horizontal" do |f| %>
+  <div class="row-fluid">
+    <div class="span6">
+      <%= f.label :date_start, 'Beginn' %>
+      <div class="datetimepicker input-append date">
+        <%= f.text_field :date_start, placeholder: 'Format: 31.12.2013 19:00', :value => @event.date_start ? @event.date_start.strftime("%d.%m.%Y %H:%m") : '' %>
+        <span class="add-on">
+          <i data-time-icon="icon-time" data-date-icon='icon-calendar'></i>
+        </span>
+      </div>
+      <div class="pull-right">
+        <%= label_tag :all_day_start do %>
+          <%= f.check_box :all_day_start %> ganztägig
+        <% end %>
+      </div>
+    </div>
+    <div class="span6">
+      <%= f.label :date_start, 'Ende (optional)' %>
+      <div class="datetimepicker input-append date">
+        <%= f.text_field :date_end, placeholder: 'Format: 31.12.2013 19:00', :value => @event.date_end ? @event.date_end.strftime("%d.%m.%Y %H:%m") : '' %>
+        <span class="add-on">
+          <i data-time-icon="icon-time" data-date-icon='icon-calendar'></i>
+        </span>
+      </div>
+      <div class="pull-right">
+        <%= label_tag :all_day_end do %>
+          <%= f.check_box :all_day_end %> ganztägig
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row-fluid">
+    <div class="span8">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'input-block-level' %>
+    </div>
+    <div class="span4">
+      <%= f.label :location, 'Ort' %>
+      <%= f.text_field :location, class: 'input-block-level' %>
+    </div>
+  </div>
+  <div class="row-fluid">
+    <div class="span12">
+      <%= f.label :description, 'Details' %>
+      <%= f.text_area :description, rows: 5, class: 'input-block-level' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <button type="submit" class="btn">Speichern</button>
+    </div>
+  </div>
+<% end %>

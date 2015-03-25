@@ -1,0 +1,45 @@
+#!/bin/sh
+# Make sure local dependencies are met
+
+set -e
+
+#
+# Welcome to Play
+#
+
+echo ""
+echo "  Vielfalt Teilen"
+echo ""
+
+#
+# Check for Bundler
+#
+if test ! $(which bundle)
+then
+  echo "  x You need to install Bundler:"
+  echo "    gem install bundler"
+  exit
+else
+  echo "  + Bundler found."
+fi
+
+#
+# Install gems
+#
+echo "  + Bootstrapping your Rubies."
+bundle install --binstubs --local --path vendor/gems --quiet
+
+#
+# Migrate the database
+#
+echo "  + Setting up the database."
+bundle exec rake db:create:all 2> /dev/null
+bundle exec rake db:setup 2> /dev/null
+
+#
+# Startup instructions
+#
+echo ""
+
+echo "  Good work. We're ready to rock."
+echo "  Run 'script/server' to start the local development server."

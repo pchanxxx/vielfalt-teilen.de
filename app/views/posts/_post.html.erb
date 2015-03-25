@@ -1,0 +1,22 @@
+<article class="post" id="post-<%= post.id %>">
+  <div class="row-fluid">
+    <div class="span12">
+      <%= image_tag post.teaser_image.url(:thumb), alt: post.title %>
+      <h3><%= post.title %><%#= link_to post.title, [post.category, post] %></h3>
+      <p><%= post.intro %></p>
+      <div class="links">
+        <% if post.intro_audio_url %>
+          <a href="#" class="play_audio" data-audio-url="<%= post.intro_audio_url %>">Vorlesen</a>
+        <% end %>
+        <% unless post.full_text.blank? %>
+          <%= link_to 'Mehr lesen', category_post_url(post.category, post) %>
+        <% end %>
+        <% unless post.simple_text.blank? %>
+          <%= link_to 'Einfach gesagt', "#{category_post_url(post.category, post)}?simple=true" %>
+        <% end %>
+        <%= link_to 'Facebook', "https://www.facebook.com/sharer/sharer.php?u=#{category_post_url(post.category,post)}", target: '_blank' %>
+        <%= link_to 'Twitter', "https://twitter.com/intent/tweet?hashtags=vielfaltteilen&text=#{post.title }: &tw_p=link&url=#{category_post_url(post.category, post)}&via=Kirsi_HoSt", target: '_blank' %>
+      </div>
+    </div>
+  </div>
+</article>

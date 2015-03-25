@@ -1,0 +1,53 @@
+$green: #39AA3F;
+
+.post, .single-post {
+  clear: both;
+  margin: 6px;
+  padding: 6px 0;
+  border-bottom: 1px solid lightgray;
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+
+  h3 {
+    font-family: 'Oswald', sans-serif;
+    margin: 0;
+    color: $green;
+
+    a {
+      color: $green;
+      text-decoration: underline;
+    }
+  }
+
+  img {
+    float: right;
+    margin-left: 25px;
+    margin-bottom: 25px;
+  }
+
+  .links {
+    clear: right;
+    text-align: right;
+
+    a {
+      text-transform: uppercase;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 900;
+      border-radius: 3px;
+      font-size: 12px;
+
+      display: inline-block;
+      padding: 0 5px;
+      background: #555;
+      color: white;
+    }
+  }
+}
+
+.single-post {
+  img {
+    margin: 5px;
+  }
+}

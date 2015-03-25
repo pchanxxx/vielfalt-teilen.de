@@ -1,0 +1,25 @@
+@import "_bootstrap";
+
+$green: #39AA3F;
+
+.event {
+  clear: both;
+  margin-bottom: 6px;
+  padding: 8px;
+
+  &:nth-child(2n) {
+    background: #EFEFEF;
+  }
+
+  h3 {
+    color: $green;
+    font-size: 18px;
+    line-height: 1em;
+    margin-top: 0;
+  }
+
+  .locationdate {
+    width: 200px;
+    text-align: right;
+  }
+}

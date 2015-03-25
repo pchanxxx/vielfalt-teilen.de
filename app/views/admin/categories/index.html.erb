@@ -1,0 +1,20 @@
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th>Slug</th>
+      <th>Name</th>
+      <th>Slogan</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @categories.each do |c| %>
+    <tr>
+      <td><%= c.slug %></td>
+      <td><%= c.name %></td>
+      <td><%= c.slogan %></td>
+      <td><%= link_to 'Bearbeiten', edit_admin_category_path(c), class: ['btn', 'btn-small'] %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

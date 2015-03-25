@@ -1,0 +1,64 @@
+$green: #39AA3F;
+
+.pagination {
+  clear: both;
+  margin: 25px auto;
+  text-align: center;
+
+  a {
+    color: $green;
+  }
+
+  .page, .first, .prev, .next, .last {
+    color: lightgray;
+    display: inline-block;
+    margin: 0 2px;
+    padding: 0;
+
+    a {
+      display: block;
+      padding: 0 5px;
+      color: white;
+      background: $green;
+      border: 1px solid white;
+
+      &:hover {
+        color: $green;
+        background: transparent;
+        border: 1px solid $green;
+      }
+    }
+  }
+
+  .current {
+    display: inline-block;
+    padding: 0 5px;
+    margin: 0 2px;
+    color: black;
+  }
+
+  .first, .prev, .next, .last {
+    a {
+      background: transparent;
+      color: $green;
+    }
+  }
+}
+
+.footer {
+  background: $green;
+
+  height: 40px;
+  line-height: 40px;
+  padding: 0 25px;
+  text-transform: uppercase;
+
+  p {
+    font-size: 12px;
+    margin: 0;
+  }
+
+  a {
+    color: #000;
+  }
+}

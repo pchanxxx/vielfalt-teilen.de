@@ -1,0 +1,25 @@
+<h2>Posts</h2>
+
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th>Start</th>
+      <th>Ende</th>
+      <th>Slogan</th>
+      <th width="150" class="actions"><%= link_to 'Neuer Eintrag', new_admin_post_path, class: ['btn', 'btn-small', 'btn-success', 'btn-block'] %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @posts.each do |p| %>
+    <tr>
+      <td><%= p.title %></td>
+      <td><%= p.status %></td>
+      <td><%= p.intro %></td>
+      <td>
+        <%= link_to 'Bearbeiten', edit_admin_post_path(p), class: ['btn', 'btn-small'] %>
+        <%= link_to 'Löschen', admin_post_path(p), method: :delete, data: { confirm: 'Sind Sie sicher?' }, class: ['btn', 'btn-small', 'btn-danger'] %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

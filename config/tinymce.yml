@@ -1,0 +1,46 @@
+plugins:
+  - advlist
+  - autolink
+  - link
+  - image
+  - lists
+  - charmap
+  - hr
+  - searchreplace
+  - wordcount
+  - visualblocks
+  - visualchars
+  - code
+  - fullscreen
+  - media
+  - table
+  - contextmenu
+  - directionality
+  - emoticons
+  - paste
+  - textcolor
+  - jbimages
+
+body_class: single-post
+language_url: /assets/tinymce.de.js
+menubar:
+  - edit
+  - insert
+  - view
+  - table
+  - format
+  - tools
+
+paste_data_images: true
+content_css: /assets/application.css
+height: 400
+style_formats:
+  -
+    title: Überschrift
+    block: h3
+  -
+    title: Zwischenüberschrift
+    block: h3
+  -
+    title: Fließtext
+    block: p

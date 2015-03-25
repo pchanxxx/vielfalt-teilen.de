@@ -1,0 +1,24 @@
+<h2>Termine</h2>
+
+<div class="events">
+  <% @events.each do |event| %>
+    <div class="event">
+      <div class="pull-right locationdate">
+        <time>
+          <%= l event.date_start.to_date, format: :long if event.date_start and event.all_day_start
+          %><%= l event.date_start, format: :short if event.date_start and !event.all_day_start %><br>
+          <% if event.date_end %>
+            bis <%= l event.date_end.to_date, format: :long if event.all_day_end %>
+            <%= l event.date_end, format: :short unless event.all_day_end %>
+          <% end %>
+        </time>
+        <p><%= event.location %></p>
+      </div>
+      <h3><%= event.name %></h3>
+      <p><%= simple_format event.description %></p>
+      <div class="clearfix"></div>
+    </div>
+  <% end %>
+</div>
+
+<%= paginate @events %>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kirsi</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "//tinymce.cachefly.net/4.0/tinymce.min.js" %>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "admin" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <div class="ad">
+      <%= link_to root_path do %>
+        <%= image_tag 'logo.svg', class: 'pull-left' %>
+        <%= image_tag 'viele_farben.png', class: 'pull-right' %>
+        <h1>Kirsi Hofmeister-Streit</h1>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="inner-container">
+    <br>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <ul class="nav">
+          <li><%= link_to 'Posts', admin_posts_path %></li>
+          <li><%= link_to 'Kategorien', admin_categories_path %></li>
+          <li><%= link_to 'Termine', admin_events_path %></li>
+          <li><%= link_to 'Zeichen', admin_zeichens_path %></li>
+        </ul>
+
+        <ul class="nav pull-right">
+          <li><%= link_to 'Benutzer', admin_users_path %></li>
+          <li class="divider-vertical"></li>
+          <li><%= link_to 'Ausloggen', destroy_user_session_path, method: :delete %></li>
+        </ul>
+      </div>
+    </div>
+    <% if notice %>
+      <p class="notice"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="error"><%= alert %></p>
+    <% end %>
+
+    <div class="row-fluid">
+      <div class="span12 content" role="main">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="pull-left">
+      <p>2013 BÜNDNIS 90/DIE GRÜNEN</p>
+    </div>
+    <div class="pull-right">
+      <p><%= link_to "Termine", events_path %> | <%= link_to "Impressum", static_impressum_path %></p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

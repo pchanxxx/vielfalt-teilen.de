@@ -1,0 +1,81 @@
+<%= form_for [:admin, @category], multipart: true, class: "form-horizontal" do |f| %>
+  <div class="row-fluid">
+    <div class="span8">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'input-block-level' %>
+    </div>
+    <div class="span4">
+      <%= f.label :slug %>
+      <%= f.text_field :slug, class: 'input-block-level' %>
+    </div>
+  </div>
+  <div class="row-fluid">
+    <div class="span12">
+      <%= f.label :slogan %>
+      <%= f.text_field :slogan, class: 'input-block-level' %>
+    </div>
+  </div>
+  <div class="row-fluid">
+    <div class="span6">
+      <div class="row-fluid">
+        <div class="span12">
+          <%= f.label :header_image %>
+          <%= f.file_field :header_image %>
+        </div>
+      </div>
+
+      <div class="row-fluid">
+        <div class="span6">
+          <%= f.label :color_top, 'Farbe oben' %>
+          <%= f.text_field :color_top, class: 'input-block-level' %>
+        </div>
+        <div class="span6">
+          <%= f.label :color_bottom, 'Farbe unten' %>
+          <%= f.text_field :color_bottom, class: 'input-block-level' %>
+        </div>
+      </div>
+    </div>
+    <div class="span6">
+      <% if @category.header_image %>
+        <%= image_tag @category.header_image.url(:thumb) %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row-fluid">
+    <div class="span12">
+      <%= f.label :introtext %>
+      <%= f.text_area :introtext, rows: 5, class: 'input-block-level' %>
+    </div>
+  </div>
+  <div class="row-fluid">
+    <div class="span12">
+      <%= f.label :simpletext, 'Einfach gesagt' %>
+      <%= f.text_area :simpletext, rows: 5, class: 'input-block-level' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <button type="submit" class="btn">Speichern</button>
+    </div>
+  </div>
+<% end %>
+
+<script>
+  $(document).ready(function() {
+    tinymce.init({
+      selector: 'textarea',
+      plugins: [
+      ],
+      body_class: 'category_description',
+      language_url: '/assets/tinymce.de.js',
+      menubar: false,
+      paste_data_images: true,
+      content_css: '/assets/application.css',
+      height: 300,
+      style_formats: [
+        { title: 'Überschrift', block: 'h3' },
+        { title: 'Fließtext', block: 'p' }
+      ]
+    });
+  });
+</script>
